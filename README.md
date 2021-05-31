@@ -1,2 +1,2 @@
 # v13-slash-1
-magical stuff, yeet the prefixes
+so this is a basic basic bot to register interactions and read them, using the bot.on('interaction' listener  
