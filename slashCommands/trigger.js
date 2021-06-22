@@ -21,7 +21,7 @@ module.exports = {
     usage: '/trigger `someone or no on, yourself`',
     run: async(bot, ctx)=>{
         ctx.defer();
-        const user = ctx.options[0]? ctx.options[0].value : ctx.user;
+        const user = ctx.options.get("person")? ctx.options.get("person").user : ctx.user;
         const pfp = user.displayAvatarURL({ size: 512, format: 'png', dynamic: false});
         const img = await canvacord.Canvas.trigger(pfp);
         const attach = new MessageAttachment(img, 'trigger.gif');
@@ -31,6 +31,6 @@ module.exports = {
         .attachFiles(attach)
         .setColor("RANDOM")
         .setFooter(ctx.user.username, ctx.user.displayAvatarURL())
-        ctx.editReply(embed);
+        ctx.editReply({ emebds: [embed]});
     }
 }
