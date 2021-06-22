@@ -2,8 +2,6 @@ const { Intents, Client, Collection } = require('discord.js');
 const bot = new Client({
     allowedMentions: { parse: [] },
     intents: new Intents(Intents.ALL), //if your bot has all the intents, change it if you don't
-    fetchAllMembers: true //make it false if you don't want to cache the whole user list when doing stuff
-    //this also takes quite a bit of RAM and time for the bot to come online if its a big bot
 });
 const { token } = require('./config.json');
 bot.slash = new Collection();
@@ -66,7 +64,7 @@ bot.on('interaction', async (interaction) => {
         bot.slash.get(interaction.commandName).run(bot, interaction); //getting the command from the slash collection and running them
     } catch (error) {
         console.log(error);
-        interaction.reply("breh, err"); //sends an error whenever there is
+        interaction.reply({ content: "breh, err"}); //sends an error whenever there is
     };
 });
 bot.login(token);
