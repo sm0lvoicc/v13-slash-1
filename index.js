@@ -1,7 +1,7 @@
 const { Intents, Client, Collection } = require('discord.js');
 const bot = new Client({
     allowedMentions: { parse: [] },
-    intents: new Intents(Intents.ALL), //if your bot has all the intents, change it if you don't
+    intents: [/*the intents you want/have*/], //if your bot has all the intents, change it if you don't
 });
 const { token } = require('./config.json');
 bot.slash = new Collection();
