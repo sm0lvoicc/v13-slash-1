@@ -1,0 +1,30 @@
+{
+  "name": "v13-interactions",
+  "version": "1.0.0",
+  "description": "a bot for registering slash commands using v13 of discord.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "/ping"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sm0lvoicc/v13-slash-1"
+  },
+  "keywords": [
+    "v13",
+    "slash",
+    "slash-commands",
+    "canvacord"
+  ],
+  "author": "sm0l voicc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sm0lvoicc/v13-slash-1"
+  },
+  "homepage": "https://github.com/sm0lvoicc/v13-slash-1#readme",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "canvacord": "^5.2.1",
+    "discord.js": "^13.0.0-dev.t1627940041.15aea68"
+  }
+}
