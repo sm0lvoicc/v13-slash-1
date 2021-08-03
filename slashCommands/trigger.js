@@ -20,17 +20,16 @@ module.exports = {
     dev: false,
     usage: '/trigger `someone or no on, yourself`',
     run: async(bot, ctx)=>{
-        ctx.defer();
-        const user = ctx.options.get("person")? ctx.options.get("person").user : ctx.user;
+        await ctx.defer();
+        const user = ctx.options.get("person")? ctx.options.get("user").value : ctx.user;
         const pfp = user.displayAvatarURL({ size: 512, format: 'png', dynamic: false});
         const img = await canvacord.Canvas.trigger(pfp);
         const attach = new MessageAttachment(img, 'trigger.gif');
         const embed = new MessageEmbed()
         .setAuthor(bot.user.username, bot.user.displayAvatarURL())
         .setImage('attachment://trigger.gif')
-        .attachFiles(attach)
         .setColor("RANDOM")
         .setFooter(ctx.user.username, ctx.user.displayAvatarURL())
-        ctx.editReply({ emebds: [embed]});
+        ctx.editReply({ embeds: [embed], files: [attach] });
     }
 }

@@ -6,11 +6,11 @@ module.exports = {
     global: false,
     usage: 'doesn\'t really matter',
     run: async (bot, ctx) => {
-        ctx.defer(); //make it .defer(true) if you want it to be ephemeral
-        const f = ctx.options.get("file").value; //so basically ctx is the context, so we are taking the value of the option 0, array so its 0
+        await ctx.defer(); //make it .defer({ ephemeral: true}) if you want it to be ephemeral
+        const f = ctx.options[0].value; //so basically ctx is the context, so we are taking the value of the option 0, array so its 0
         const file = require(`./${f}`);
         const stuff = file.data;
-        if (!ctx.options.first() || ctx.options.first().value == "everywhere") {
+        if (!ctx.options[1] || ctx.options[1].value == "everywhere") {
             if (file.global) {  //ok so remember, it takes 1 hour to register a global command, and ig you can make similar stuff so it registers guild commands too
                 try {
                     bot.application.commands.create(stuff);
@@ -35,7 +35,7 @@ module.exports = {
                         .setFooter(ctx.user.username, ctx.user.displayAvatarURL())
                         .setTimestamp()
                         .setColor("#5865F2")
-                    ctx.editReply({ embed: [embed]});
+                    ctx.editReply({ embeds: [embed] });
                     return;
                 } catch (error) {
                     console.log(error);
@@ -68,7 +68,7 @@ module.exports = {
                 .setFooter(ctx.user.username, ctx.user.displayAvatarURL())
                 .setTimestamp()
                 .setColor("#5865F2")
-            ctx.editReply({ embeds: [embed]});
+            ctx.editReply({ embeds: [embed] });
         }
     }
 }
